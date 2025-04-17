@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}Меню{% endblock %}
+
+{% block content %}
+    <h1>Меню</h1>
+
+    {% for category, items in menu.items() %}
+        <h2>{{ category }}</h2>
+        <div class="row">
+            {% for item in items %}
+                <div class="col-md-4">
+                    <div class="menu-item">
+                        <img src="{{ item.image }}" alt="{{ item.name }}">
+                        <h3>{{ item.name }}</h3>
+                        <p>Цена: {{ item.price }} руб.</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
