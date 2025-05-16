@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Добавить блюдо в меню</h1>
+    <form method="POST" action="{{ url_for('add_menu_item') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.name.label }} {{ form.name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.category.label }} {{ form.category(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.price.label }} {{ form.price(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.image.label }} {{ form.image(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+{% endblock %}

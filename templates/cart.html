@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}Корзина - RESTaurant{% endblock %}
+
+{% block content %}
+    <h1>Корзина</h1>
+
+    {% if cart_items %}
+        <div class="row">
+            {% for item in cart_items %}
+                <div class="col-md-4">
+                    <div class="menu-item">
+                        <img src="{{ item.image }}" alt="{{ item.name }}" class="img-fluid">
+                        <h3>{{ item.name }}</h3>
+                        <p>Цена: {{ item.price }} ₽</p>
+                        <p>Количество: {{ item.quantity }}</p>
+                        <p>Сумма: {{ item.price * item.quantity }} ₽</p>
+                        <a href="{{ url_for('remove_from_cart', item_id=item.id) }}" class="btn btn-danger">Удалить</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="mt-3">
+            <h3>Итоговая цена: {{ total_price }} ₽</h3>
+            <form method="POST" action="{{ url_for('place_order') }}">
+                <button type="submit" class="btn btn-primary">Оформить заказ</button>
+            </form>
+        </div>
+    {% else %}
+        <p class="alert alert-info">Ваша корзина пуста.</p>
+        <a href="{{ url_for('menu') }}" class="btn btn-secondary">Перейти в меню</a>
+    {% endif %}
+{% endblock %}
+

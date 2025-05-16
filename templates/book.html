@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block title %}Забронировать столик{% endblock %}
+
+{% block content %}
+    <h1>Забронировать столик</h1>
+    <form method="post">
+        {{ form.csrf_token }}
+
+        <div class="mb-3">
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+            {% if form.name.errors %}
+                <ul class="errors">
+                    {% for error in form.name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.date.label(class="form-label") }}
+            {{ form.date(class="form-control") }}
+            {% if form.date.errors %}
+                <ul class="errors">
+                    {% for error in form.date.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.time.label(class="form-label") }}
+            {{ form.time(class="form-select") }}
+            {% if form.time.errors %}
+                <ul class="errors">
+                    {% for error in form.time.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.guests.label(class="form-label") }}
+            {{ form.guests(class="form-control") }}
+            {% if form.guests.errors %}
+                <ul class="errors">
+                    {% for error in form.guests.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.comment.label(class="form-label") }}
+            {{ form.comment(class="form-control", rows="3") }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+{% endblock %}
+

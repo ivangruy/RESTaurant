@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block title %}Подтверждение бронирования{% endblock %}
+
+{% block content %}
+    <h1>Подтверждение бронирования</h1>
+    <p>Ваш столик забронирован на <b>{{ date }}</b> в <b>{{ time }}</b> для <b>{{ guests }}</b> человек.</p>
+    {% if comment %}
+        <p>Комментарий: {{ comment }}</p>
+    {% endif %}
+    <p>Спасибо за бронирование!</p>
+{% endblock %}
